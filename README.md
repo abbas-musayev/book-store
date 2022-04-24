@@ -14,6 +14,8 @@
     
     JUnit Jupiter, Mockito for writing unit tests
     
+    Swagger to describe the structure of your APIs
+    
 ### In order to use the written Api, I exported the collections which I created in Postman and added them here.
     
 
