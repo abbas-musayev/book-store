@@ -1,6 +1,6 @@
 # book-store
 
-## Hello Guys, This project is written for a bookstore. The technology used here is Java 1.8 version, Spring Framework.
+## Hello Guys, This project is written for a bookstore. The technology used here is Java 1.8 version and Spring Framework.
 
 ### I used :
 
