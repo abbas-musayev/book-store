@@ -2,7 +2,7 @@ package com.example.shopping.service.impl;
 
 import com.example.shopping.config.EncryptPassword;
 import com.example.shopping.dao.dto.request.PublisherRequestDto;
-import com.example.shopping.dao.entity.LoginDetails;
+import com.example.shopping.dao.entity.LoginDetailsEnt;
 import com.example.shopping.dao.entity.PublisherEnt;
 import com.example.shopping.dao.entity.RoleEnt;
 import com.example.shopping.dao.repo.PublisherRepo;
@@ -26,20 +26,20 @@ public class PublisherServiceImpl implements IPublisherService {
     @Override
     public String register(PublisherRequestDto dto) {
 
-        LoginDetails loginDetails = mapper.map(dto.getLoginDetails(),LoginDetails.class);
+        LoginDetailsEnt loginDetailsEnt = mapper.map(dto.getLoginDetails(), LoginDetailsEnt.class);
 
-        Optional<PublisherEnt> optional = publisherRepo.getPublisherByName(loginDetails.getUsername());
+        Optional<PublisherEnt> optional = publisherRepo.getPublisherByName(loginDetailsEnt.getUsername());
 
         if (optional.isPresent() && optional.get().getIsActive().equals("1")){
             throw new CustomNotFoundException("This username  already exists");
         }
         PublisherEnt publisher = mapper.map(dto, PublisherEnt.class);
 
-        String encrypt = EncryptPassword.hashPassword(loginDetails.getPassword());
-        loginDetails.setPassword(encrypt);
-        loginDetails.setIsActive("1");
-        loginDetails.setRoles(Collections.singletonList(new RoleEnt(null, RolesEnum.PUBLISHER,"1")));
-        publisher.setLoginDetails(loginDetails);
+        String encrypt = EncryptPassword.hashPassword(loginDetailsEnt.getPassword());
+        loginDetailsEnt.setPassword(encrypt);
+        loginDetailsEnt.setIsActive("1");
+        loginDetailsEnt.setRoles(Collections.singletonList(new RoleEnt(null, RolesEnum.PUBLISHER,"1")));
+        publisher.setLoginDetailsEnt(loginDetailsEnt);
         publisher.setIsActive("1");
         publisherRepo.save(publisher);
         return "Saved";

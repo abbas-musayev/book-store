@@ -15,9 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-public class LoginDetails
-//        extends CoreEnt
-{
+public class LoginDetailsEnt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -25,7 +23,7 @@ public class LoginDetails
     String username;
     String password;
 
-    public LoginDetails(Long id, String username, String password, String isActive,List<RoleEnt> roleEntList) {
+    public LoginDetailsEnt(Long id, String username, String password, String isActive, List<RoleEnt> roleEntList) {
         this.id = id;
         this.username = username;
         this.password = password;

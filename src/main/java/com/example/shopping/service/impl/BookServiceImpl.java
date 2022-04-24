@@ -9,6 +9,10 @@ import com.example.shopping.service.IBookService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,12 +21,21 @@ import java.util.List;
 
 
 @Service
-@RequiredArgsConstructor
 @Slf4j
 public class BookServiceImpl implements IBookService {
 
     private final BookRepo bookRepo;
     private final ModelMapper mapper;
+
+    @Autowired
+    public BookServiceImpl(BookRepo bookRepo, ModelMapper mapper) {
+        this.bookRepo = bookRepo;
+        this.mapper = mapper;
+    }
+
+//    public BookServiceImpl(BookRepo bookRepo) {
+//        this.bookRepo = bookRepo;
+//    }
 
     @Override
     public String save(BookRequestDTO entity) {
@@ -31,9 +44,9 @@ public class BookServiceImpl implements IBookService {
 
         List<AuthorEnt> authorEnts = new ArrayList<>();
         for (String author : entity.getAuthors()) {
-            authorEnts.add(new AuthorEnt(author,"1"));
+            authorEnts.add(new AuthorEnt(author, "1"));
         }
-        log.info("Pulisher ;{}",map.getAuthor());
+        log.info("Pulisher ;{}", map.getAuthor());
 
         map.setAuthor(authorEnts);
         map.setIsActive("1");
@@ -42,8 +55,19 @@ public class BookServiceImpl implements IBookService {
     }
 
     @Override
-    public List<BookResponseDTO> viewAllBooks() {
-        return bookRepo.viewAllBooks();
+    public List<BookResponseDTO> viewAllBooks(Integer pageNumber, Integer pageSize) {
+        PageRequest pageable = PageRequest.of(pageNumber, pageSize);
+
+        Page<BookEnt> all = bookRepo.findAll(pageable);
+        List<BookEnt> content = all.getContent();
+        List<BookResponseDTO> dtos = new ArrayList<>();
+        content.forEach(item -> {
+            BookResponseDTO map = mapper.map(item, BookResponseDTO.class);
+            dtos.add(map);
+        });
+
+        return dtos;
+//        return bookRepo.viewAllBooks();
     }
 
     @Override

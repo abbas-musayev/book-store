@@ -2,6 +2,7 @@ package com.example.shopping.dao.repo;
 
 import com.example.shopping.dao.dto.response.BookResponseDTO;
 import com.example.shopping.dao.entity.BookEnt;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

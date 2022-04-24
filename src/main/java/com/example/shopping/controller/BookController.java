@@ -31,9 +31,9 @@ public class BookController {
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_PUBLISHER')")
-    @GetMapping
-    public ResponseEntity<List<BookResponseDTO>> viewAllBooks() {
-        return ResponseEntity.ok(bookService.viewAllBooks());
+    @GetMapping("/viewAllBooks")
+    public ResponseEntity<List<BookResponseDTO>> viewAllBooks(@RequestParam(required = false) Integer pageNumber,@RequestParam(required = false) Integer pageSize) {
+        return ResponseEntity.ok(bookService.viewAllBooks(pageNumber,pageSize));
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_PUBLISHER')")

@@ -10,7 +10,7 @@ public interface IBookService {
 
     String save(BookRequestDTO entity);
 
-    List<BookResponseDTO> viewAllBooks();
+    List<BookResponseDTO> viewAllBooks(Integer pageNumber,Integer pageSize);
 
     List<BookResponseDTO> viewAllBooksByPublisherName(String name);
 

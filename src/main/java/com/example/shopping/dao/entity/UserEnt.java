@@ -20,7 +20,7 @@ public class UserEnt {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    Long id;
     String name;
     String surname;
 
@@ -28,7 +28,7 @@ public class UserEnt {
     String email;
     String phone;
     @OneToOne(cascade = CascadeType.ALL)
-    LoginDetails loginDetails;
+    LoginDetailsEnt loginDetailsEnt;
 
     @CreationTimestamp
     LocalDateTime createdate;
@@ -36,7 +36,17 @@ public class UserEnt {
     LocalDateTime updateDate;
     String isActive;
 
-//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public UserEnt(String name, String surname, String email, String phone, LoginDetailsEnt loginDetailsEnt, String isActive) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.phone = phone;
+        this.loginDetailsEnt = loginDetailsEnt;
+        this.isActive = isActive;
+    }
+
+
+    //    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //    @JoinTable(name = "USER_ROLES", joinColumns = {
 //            @JoinColumn(name = "USER_ID")}, inverseJoinColumns = {
 //            @JoinColumn(name = "ROLE_ID")})

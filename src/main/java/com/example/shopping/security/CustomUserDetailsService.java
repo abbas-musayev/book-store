@@ -1,7 +1,6 @@
 package com.example.shopping.security;
 
-import com.example.shopping.config.EncryptPassword;
-import com.example.shopping.dao.entity.LoginDetails;
+import com.example.shopping.dao.entity.LoginDetailsEnt;
 import com.example.shopping.dao.repo.LoginDetailsRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,13 +28,13 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         log.info("--------loadUserByUsername---------");
-        LoginDetails userMy = repo.findLoginEntByUsername(username)
+        LoginDetailsEnt userMy = repo.findLoginEntByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("Username \""+"username\""+" not found")));
 
             return new User(userMy.getUsername(), userMy.getPassword(),getAuthority(userMy));
     }
 
-    private List<SimpleGrantedAuthority> getAuthority(LoginDetails user) {
+    private List<SimpleGrantedAuthority> getAuthority(LoginDetailsEnt user) {
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
         user.getRoles().forEach(role -> {
             log.info("--------GETAUTHORITY-> ROLE:"+role.getName()+"---------");

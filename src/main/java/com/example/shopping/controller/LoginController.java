@@ -3,7 +3,7 @@ package com.example.shopping.controller;
 import com.example.shopping.config.EncryptPassword;
 import com.example.shopping.dao.dto.request.AuthRequestDto;
 import com.example.shopping.dao.dto.response.AuthResponseDto;
-import com.example.shopping.dao.entity.LoginDetails;
+import com.example.shopping.dao.entity.LoginDetailsEnt;
 import com.example.shopping.dao.repo.LoginDetailsRepo;
 import com.example.shopping.exception.CustomNotFoundException;
 import com.example.shopping.security.TokenManager;
@@ -41,7 +41,7 @@ public class LoginController {
     public ResponseEntity<AuthResponseDto> login(@RequestBody AuthRequestDto request) throws CustomNotFoundException {
         log.info("----------Login Controller-------");
 
-        Optional<LoginDetails> entity = repo.findLoginEntByUsername(request.getUsername());
+        Optional<LoginDetailsEnt> entity = repo.findLoginEntByUsername(request.getUsername());
 
         if (entity.get().getIsActive().equals("0")){
             throw new RuntimeException("USER'S ACCOUNT DOES NOT EXIST");

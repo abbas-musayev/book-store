@@ -36,5 +36,4 @@ public class UserController {
 //    public ResponseEntity<String> deleteUser(@RequestParam String username) {
 //        return ResponseEntity.ok(userService.delete(username));
 //    }
-
 }

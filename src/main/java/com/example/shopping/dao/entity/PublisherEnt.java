@@ -27,7 +27,7 @@ public class PublisherEnt
     String address;
     String contactNumber;
     @OneToOne(cascade = CascadeType.ALL)
-    LoginDetails loginDetails;
+    LoginDetailsEnt loginDetailsEnt;
     @ManyToMany(cascade = CascadeType.ALL)
     List<BookEnt> bookEnts;
 
