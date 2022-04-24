@@ -1,0 +1,313 @@
+{
+	"info": {
+		"_postman_id": "339564f4-a48c-413a-8101-0af5e3ba699b",
+		"name": "Book_Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\": \"abbas\",\r\n   \"surname\": \"musayev\",\r\n   \"email\": \"abbas@mailru\",\r\n   \"phone\": \"23434\",\r\n   \"loginDetails\":{\r\n       \"username\": \"novruz1\",\r\n       \"password\": \"123456789\"\r\n   } \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8085/register/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"register",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ViewAllUsers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmJhcyIsInNjb3BlcyI6IlJPTEVfQURNSU4sUk9MRV9QVUJMSVNIRVIsUk9MRV9VU0VSIiwiaXNzIjoiYWJiYXM5OW11c2F5ZXZAZ21haWwuY29tIiwiaWF0IjoxNjUwNzM4MDkxLCJleHAiOjE2NTA3MzgzOTF9.v0FFd_n3TaYnzvO6sJYeHpTacjyR0Ra9hY3_pqABgd4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8085/user/",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Publisher",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ingress\",\r\n    \"address\": \"11\",\r\n    \"contactNumber\": \"4111796\",\r\n    \"loginDetails\":{\r\n        \"username\": \"novruz\",\r\n        \"password\": \"123456\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8085/register/publisher",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"register",
+								"publisher"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login and Register",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"username\": \"abbas\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8085/login/auth",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"login",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Book",
+			"item": [
+				{
+					"name": "SaveBook",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmJhcyIsInNjb3BlcyI6IlJPTEVfQURNSU4sUk9MRV9QVUJMSVNIRVIsUk9MRV9VU0VSIiwiaXNzIjoiYWJiYXM5OW11c2F5ZXZAZ21haWwuY29tIiwiaWF0IjoxNjUwNzQ0MzY5LCJleHAiOjE2NTA3NDQ2Njl9._Irh5XedvBA_JNDAjx9bqZ0pJJ3ALqtNLNgpV8U2PEY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"authors\": [\r\n    \"Abbas\"\r\n  ],\r\n  \"description\": \"eyni\",\r\n  \"name\": \"sefiller\",\r\n  \"price\": \"12\",\r\n  \"publishDate\": \"12-12-2022\",\r\n  \"publishers\": [\r\n    {\r\n        \"id\": 1,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"genre\": \"Action_and_Adventure\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8085/book",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ViewAllBooks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJub3ZydXoiLCJzY29wZXMiOiJST0xFX1BVQkxJU0hFUiIsImlzcyI6ImFiYmFzOTltdXNheWV2QGdtYWlsLmNvbSIsImlhdCI6MTY1MDc0MzU2MiwiZXhwIjoxNjUwNzQzODYyfQ.kaGZPxAT-6T92Tfo0XqqLQuujyy97t_LzxcAbQWA3as",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8085/book/",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"book",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindBookByName",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmJhcyIsInNjb3BlcyI6IlJPTEVfQURNSU4sUk9MRV9QVUJMSVNIRVIsUk9MRV9VU0VSIiwiaXNzIjoiYWJiYXM5OW11c2F5ZXZAZ21haWwuY29tIiwiaWF0IjoxNjUwNzQ0MzY5LCJleHAiOjE2NTA3NDQ2Njl9._Irh5XedvBA_JNDAjx9bqZ0pJJ3ALqtNLNgpV8U2PEY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8085/book/getByName?name=sefiller",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"book",
+								"getByName"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "sefiller"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindBookByPublisher",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJub3ZydXoiLCJzY29wZXMiOiJST0xFX1BVQkxJU0hFUiIsImlzcyI6ImFiYmFzOTltdXNheWV2QGdtYWlsLmNvbSIsImlhdCI6MTY1MDc0NDE5OCwiZXhwIjoxNjUwNzQ0NDk4fQ.thy0ioGqGGtLjEHj6q6trOy6pghKixDf0w5Tb22fNCI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8085/book/publisher-books?name=Ingress",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"book",
+								"publisher-books"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Ingress"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindBookByAuthorName",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJub3ZydXoiLCJzY29wZXMiOiJST0xFX1BVQkxJU0hFUiIsImlzcyI6ImFiYmFzOTltdXNheWV2QGdtYWlsLmNvbSIsImlhdCI6MTY1MDc0NDE5OCwiZXhwIjoxNjUwNzQ0NDk4fQ.thy0ioGqGGtLjEHj6q6trOy6pghKixDf0w5Tb22fNCI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8085/book/getByAuthorname?name=Abbas",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"book",
+								"getByAuthorname"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Abbas"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
